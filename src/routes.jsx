@@ -4,24 +4,27 @@ import Feira from 'pages/Feira';
 import Carrinho from 'pages/Carrinho';
 import { UsuarioProvider } from 'common/context/Usuario';
 import { CarrinhoProvider } from 'common/context/Carrinho';
+import { PagamentoProvider } from 'common/context/Pagamento';
 
 export default function Router() {
-    return(
+    return (
         <BrowserRouter>
             <Switch>
                 <UsuarioProvider>
                     <Route exact path='/'>
-                            <Login/>
+                        <Login />
                     </Route>
                     <CarrinhoProvider>
                         <Route path='/feira'>
-                            <Feira/>
+                            <Feira />
                         </Route>
+                        <PagamentoProvider>
+                            <Route path='/carrinho'>
+                                <Carrinho />
+                            </Route>
+                        </PagamentoProvider>
                     </CarrinhoProvider>
                 </UsuarioProvider>
-                <Route path='/carrinho'>
-                    <Carrinho/>
-                </Route>
             </Switch>
         </BrowserRouter>
     );
